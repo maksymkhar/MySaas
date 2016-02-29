@@ -36,4 +36,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('auth/google', 'Auth\AuthController@redirectToGoogleProvider');
     Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleProviderCallback');
+
+    Route::get('csstransitions', function(){
+        return view('tinkering.csstransitions');
+    });
 });
