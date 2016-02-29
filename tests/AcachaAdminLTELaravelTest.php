@@ -21,9 +21,9 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testLandingPage()
     {
         $this->visit('/')
-             ->see('Acacha')
-             ->see('adminlte-laravel')
-             ->see('Pratt');
+            ->see('Acacha')
+            ->see('adminlte-laravel')
+            ->see('Pratt');
     }
 
     /**
@@ -173,7 +173,7 @@ class AcachaAdminLTELaravelTest extends TestCase
             ->press('Register')
             ->seePageIs('/home')
             ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
-                                      'name'  => 'Sergi Tur Badenas']);
+                'name'  => 'Sergi Tur Badenas']);
 
     }
 

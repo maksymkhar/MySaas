@@ -27,5 +27,13 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::get('auth/github', 'Auth\AuthController@redirectToGithubProvider');
+    Route::get('auth/github/callback', 'Auth\AuthController@handleGithubProviderCallback');
+
+    Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebookProvider');
+    Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookProviderCallback');
+
+    Route::get('auth/google', 'Auth\AuthController@redirectToGoogleProvider');
+    Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleProviderCallback');
 });
