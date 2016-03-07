@@ -45,5 +45,10 @@ return [
         'client_secret' => env('SOCIALITE_GOOGLE_SECRET'),
         'redirect' => env('SOCIALITE_GOOGLE_URL'),
     ],
+    'facebook' => [
+        'client_id' => env('SOCIALITE_FACEBOOK_ID'),
+        'client_secret' => env('SOCIALITE_FACEBOOK_SECRET'),
+        'redirect' => env('SOCIALITE_FACEBOOK_URL'),
+    ],
 
 ];
