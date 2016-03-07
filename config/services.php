@@ -50,5 +50,10 @@ return [
         'client_secret' => env('SOCIALITE_FACEBOOK_SECRET'),
         'redirect' => env('SOCIALITE_FACEBOOK_URL'),
     ],
+    'twitter' => [
+        'client_id' => env('SOCIALITE_TWITTER_ID'),
+        'client_secret' => env('SOCIALITE_TWITTER_SECRET'),
+        'redirect' => env('SOCIALITE_TWITTER_URL'),
+    ],
 
 ];
