@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Laravel\Socialite\Facades\Socialite;
+use Mockery\CountValidator\Exception;
+use Redirect;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -69,4 +72,38 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToAuthenticationServiceProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleAuthenticationServiceProviderCallback($provider)
+    {
+//
+//        try {
+//
+//            $user = Socialite::driver($provider)->user();
+//
+//        } catch(Exception $e) {
+//
+//            return Redirect::to('auth/' . $provider);
+//        }
+//
+//
+//
+//        // $user->token;
+    }
+
+
 }
