@@ -38,6 +38,12 @@ return [
     'github' => [
         'client_id' => env('SOCIALITE_GITHUB_ID'),
         'client_secret' => env('SOCIALITE_GITHUB_SECRET'),
-        'redirect' => env('http://localhost:8000/auth/github/callback'),
+        'redirect' => env('SOCIALITE_GITHUB_URL'),
     ],
+    'google' => [
+        'client_id' => env('SOCIALITE_GOOGLE_ID'),
+        'client_secret' => env('SOCIALITE_GOOGLE_SECRET'),
+        'redirect' => env('SOCIALITE_GOOGLE_URL'),
+    ],
+
 ];
