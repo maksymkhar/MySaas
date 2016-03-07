@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Mockery\CountValidator\Exception;
 use Redirect;
@@ -90,20 +91,24 @@ class AuthController extends Controller
      */
     public function handleAuthenticationServiceProviderCallback($provider)
     {
+        try {
+
+            $user = Socialite::driver($provider)->user();
+
+        } catch(Exception $e) {
+
+            return Redirect::to('auth/' . $provider);
+        }
+
+        dd($user);
+
+
+//        $authUser = $this->findOrCreateUser($user, $provider);
 //
-//        try {
+//        Auth::login($authUser, true);
 //
-//            $user = Socialite::driver($provider)->user();
-//
-//        } catch(Exception $e) {
-//
-//            return Redirect::to('auth/' . $provider);
-//        }
-//
-//
-//
-//        // $user->token;
+//        return Redirect::to('home');
+
+
     }
-
-
 }
