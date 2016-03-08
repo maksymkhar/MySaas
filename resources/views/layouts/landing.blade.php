@@ -49,7 +49,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/plans') }}">Register</a></li>
                 @else
                     <li><a href="/home">{{ Auth::user()->name }}</a></li>
                 @endif

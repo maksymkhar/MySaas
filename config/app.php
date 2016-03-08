@@ -168,6 +168,8 @@ return [
         #llum_providers
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        Laravel\Cashier\CashierServiceProvider::class
     ],
 
     /*
@@ -225,6 +227,7 @@ return [
         #llum_aliases
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ],
 
 ];
