@@ -50,8 +50,10 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/plans') }}">Register</a></li>
-                @else
+                @elseif(Auth::user()->name != null)
                     <li><a href="/home">{{ Auth::user()->name }}</a></li>
+                @else()
+                    <li><a href="/home">{{ Auth::user()->email }}</a></li>
                 @endif
             </ul>
         </div><!--/.nav-collapse -->
@@ -65,21 +67,25 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-                <h1>Acacha <b><a href="https://github.com/acacha/adminlte-laravel">adminlte-laravel</a></b></h1>
+                <h1>No idea <b><a href="https://github.com/acacha/adminlte-laravel">Jolo Compolo</a></b></h1>
                 <h3>A <a href="https://laravel.com/">Laravel</a> 5 package that switchs default Laravel
                     scaffolding/boilerplate to <a href="https://almsaeedstudio.com/preview">AdminLTE</a> template with
                     <a href="http://getbootstrap.com/">Bootstrap</a> 3.0 and <a href="http://blacktie.co/demo/pratt/">Pratt</a> Landing page</h3>
                 <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">Get Started!</a></h3>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-4">
                 <h5>Amazing admin template</h5>
                 <p>Based on adminlte bootstrap theme</p>
                 <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
             </div>
-            <div class="col-lg-8">
-                <img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt="">
+            <div class="col-lg-4">
+                <!--img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt=""-->
+                <iframe src="https://appetize.io/embed/0y4rcah6cv4qkbdky3ced7e9zg?device=iphone5s&scale=75&autoplay=false&orientation=portrait&deviceColor=black"
+                        height="587px"
+                        frameborder="0"
+                        scrolling="no"></iframe>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-4">
                 <br>
                 <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow2.png') }}">
                 <h5>Awesome packaged...</h5>
@@ -88,16 +94,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div>
     </div> <!--/ .container -->
 
-
-    <div class="container">
-        <div class="row centered">
-
-            <iframe src="https://appetize.io/embed/0y4rcah6cv4qkbdky3ced7e9zg?device=iphone5s&scale=75&autoplay=false&orientation=portrait&deviceColor=black"
-                    height="587px"
-                    frameborder="0"
-                    scrolling="no"></iframe>
-        </div>
-    </div>
 
 </div><!--/ #headerwrap -->
 

@@ -8,6 +8,8 @@
 
     <body class="hold-transition register-page">
     <div class="register-box">
+
+
         <div class="register-logo">
             <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
             Plan 2
@@ -22,49 +24,13 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+            @endif
 
+        <!-- PAYMENT -->
+        @include('auth/partials/stripe_subscription_form')
+        <!-- REGISTER -->
         @include('auth/partials/register')
 
-
-
-
-        <div class="register-box-body">
-            <p class="login-box-msg">Register a new membership</p>
-
-
-            <form action="{{url('subscription_payment')}}" method="POST" id="payment-form">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <span class="payment-errors"></span>
-
-
-                <div class="form-group has-feedback">
-                    <input class="form-control" type="text" placeholder="Card Number" size="20" data-stripe="number"
-                    value="4242424242424242"/>
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-
-                <div class="form-group has-feedback">
-                    <input class="form-control" type="text" placeholder="CVC" size="4" data-stripe="cvc"
-                    value="213"/>
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-
-                <div class="form-row">
-
-                    <label>
-                        <span>Expiration (MM/YYYY)</span>
-                        <input type="text" size="2" data-stripe="exp-month"
-                        value="05"/>
-                    </label>
-                    <span> / </span>
-                    <input type="text" size="4" data-stripe="exp-year"
-                    value="2020"/>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Submit Payment</button>
-            </form>
-        </div>
     </div><!-- /.register-box -->
 
     @include('layouts.partials.scripts_auth')
