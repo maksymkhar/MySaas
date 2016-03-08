@@ -43,7 +43,11 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('plans', 'PlansController@index');
 
+
     Route::get('register_subscription',  function () {
         return View('auth.register_subscription');
     });
+
+    Route::post('subscription_payment', 'SubscriptionController@subscribe');
+
 });
