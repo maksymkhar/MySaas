@@ -52,6 +52,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('subscription_payment', 'SubscriptionController@subscribe');
 
+    Route::get('reports/daily_sales', 'ReportsController@dailySales');
+
     Route::get('test', function(){
 
         $subscriptions = Subscription::all();
