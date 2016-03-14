@@ -11,6 +11,8 @@
 |
 */
 
+use Laravel\Cashier\Subscription;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -49,5 +51,33 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::post('subscription_payment', 'SubscriptionController@subscribe');
+
+    Route::get('test', function(){
+
+        $subscriptions = Subscription::all();
+
+        $totals = array();
+
+        foreach ($subscriptions as $subscription) {
+
+            $day = $subscription->created_at->format('Y-m-d');
+            $quantity = $subscription->quantity;
+
+            $daily = array($day => $quantity);
+
+            if(!in_array($daily, $totals, true)){
+                array_push($totals, $daily);
+            }
+        }
+
+        //array_unique($totals);
+
+        dd(json_encode($totals));
+
+        //$result = array_unique($totals);
+
+       //echo $result;
+
+    });
 
 });
