@@ -17,6 +17,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/all.css" class="style">
+
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
@@ -153,10 +155,11 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="col-lg-7">
             <h3>Drop Us A Line</h3>
             <br>
-            <form role="form" action="#" method="post" enctype="plain">
+            <form role="form" action="{{url('sendContactEmail')}}" method="post" enctype="plain">
+                {{csrf_field()}}
                 <div class="form-group">
                     <label for="name1">Your Name</label>
-                    <input type="name" name="Name" class="form-control" id="name1" placeholder="Your Name">
+                    <input type="text" name="Name" class="form-control" id="name1" placeholder="Your Name">
                 </div>
                 <div class="form-group">
                     <label for="email1">Email address</label>
@@ -197,6 +200,9 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     })
 </script>
 
+<script src="js/all.js"></script>
+@include('layouts.partials.flash_message')
+
 <script>
     $('#headerwrap').backstretch([
         '/img/slide_1.jpg',
@@ -205,6 +211,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         //, "./assets/img/background_3.jpg"
     ], {duration: 3000, fade: 750});
 </script>
+
 
 
 </body>

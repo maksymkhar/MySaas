@@ -169,7 +169,9 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
 
-        Laravel\Cashier\CashierServiceProvider::class
+        Laravel\Cashier\CashierServiceProvider::class,
+
+        App\Providers\FlashServiceProvider::class,
     ],
 
     /*
@@ -227,6 +229,8 @@ return [
         #llum_aliases
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'Flash' => App\Facades\Flash::class
 
     ],
 

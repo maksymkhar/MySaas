@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +36,14 @@ Route::group(['middleware' => ['web']], function () {
     });
 });
 
+App::bind('Flash',
+    App\Http\Flash::class);
 
 Route::group(['middleware' => 'web'], function () {
+
+    Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);
+
+
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
@@ -49,5 +55,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::post('subscription_payment', 'SubscriptionController@subscribe');
+
+    Route::post('sendContactEmail', 'ContactEmailController@send');
 
 });
