@@ -19,6 +19,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
     <link rel="stylesheet" href="css/all.css" class="style">
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
@@ -174,6 +176,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             </form>
         </div>
     </div>
+
 </div>
 <div id="c">
     <div class="container">
@@ -186,7 +189,31 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
              Pratt Landing Page Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a>
         </p>
 
+
+
     </div>
+
+
+    <!--div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=https%3A%2F%2Fgithub.com%2Fmaksymkhar%2FMySaas&amp;linkname=MySaas"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+    </div>
+    <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.linkname = "MySaas";
+        a2a_config.linkurl = "https://github.com/maksymkhar/MySaas";
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script-->
+
+
+
+
+
+
+
+
 </div>
 
 
@@ -212,6 +239,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     ], {duration: 3000, fade: 750});
 </script>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56eb1402b198c6fc"></script>
 
 
 </body>
