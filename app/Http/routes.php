@@ -54,7 +54,9 @@ Route::group(['middleware' => 'web'], function () {
         return View('auth.register_subscription');
     });
 
-    Route::post('subscription_payment', 'SubscriptionController@subscribe');
+    //Route::post('subscription_payment', 'SubscriptionController@subscribe');
+
+    Route::post('registerAndSubscribeToStripe', 'Auth\AuthController@registerAndSubscribeToStripe');
 
     Route::post('sendContactEmail', 'ContactEmailController@send');
 

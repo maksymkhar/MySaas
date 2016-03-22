@@ -1,4 +1,4 @@
-<div class="register-box-body">
+<div class="register-box-body" id="stripe-form-container">
     <p class="login-box-msg">Payment mode</p>
 
     <form action="{{url('subscription_payment')}}" method="POST" id="payment-form">

@@ -24,7 +24,7 @@
             </div>
         @endif
 
-        @include('auth/partials/register')
+        @include('auth/partials/register', ['url' => 'register'])
 
     </div><!-- /.register-box -->
 
