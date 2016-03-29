@@ -123,14 +123,8 @@
                     <div style="display: block;" class="box-body">
                         <div class="chart">
                             <!--canvas height="227" width="510" id="barChartDailySales" style="height: 227px; width: 510px;"></canvas-->
-                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
-                                    :values="[0, 100, 0, 100, 0]" ></graph>
-
-                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
-                                    :values="[0, 55,44, 100, 0]" ></graph>
-
-                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
-                                    :values="[33, 100, 0, 33, 0]" ></graph>
+                            <graph  :labels='{!!  json_encode($days) !!}'
+                                    :values='{!!  json_encode($totals) !!}' ></graph>
                         </div>
                     </div>
                     <!-- /.box-body -->
