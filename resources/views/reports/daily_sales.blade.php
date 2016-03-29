@@ -6,7 +6,9 @@
 
 @section('custom_scripts')
     <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script-->
+
+
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -17,49 +19,40 @@
 
     <script>
 
-        var ctx = document.getElementById("barChartDailySales").getContext("2d");
-
-        var data = {
-            labels: {!! json_encode($days) !!},
-            datasets: [
-                {
-                    label: "Daily Sales",
-                    fillColor: "rgba(255,154,0,0.5)",
-                    strokeColor: "rgba(174,104,0,0.8)",
-                    highlightFill: "rgba(255,154,0,0.75)",
-                    highlightStroke: "rgba(174,104,0,1)",
-                    data: {!! json_encode($totals) !!}
-                }
-            ]
-        };
-
-        var options = {
-            scaleBeginAtZero : true,
-            scaleShowGridLines : true,
-            scaleGridLineColor : "rgba(0,0,0,.05)",
-            scaleGridLineWidth : 1,
-            scaleShowHorizontalLines: true,
-            scaleShowVerticalLines: true,
-            barShowStroke : true,
-            barStrokeWidth : 2,
-            barValueSpacing : 30,
-            barDatasetSpacing : 1
-        };
 
 
+        {{--var ctx = document.getElementById("barChartDailySales").getContext("2d");--}}
 
+        {{--var data = {--}}
+            {{--labels: {!! json_encode($days) !!},--}}
+            {{--datasets: [--}}
+                {{--{--}}
+                    {{--label: "Daily Sales",--}}
+                    {{--fillColor: "rgba(255,154,0,0.5)",--}}
+                    {{--strokeColor: "rgba(174,104,0,0.8)",--}}
+                    {{--highlightFill: "rgba(255,154,0,0.75)",--}}
+                    {{--highlightStroke: "rgba(174,104,0,1)",--}}
+                    {{--data: {!! json_encode($totals) !!}--}}
+                {{--}--}}
+            {{--]--}}
+        {{--};--}}
 
+        {{--var options = {--}}
+            {{--scaleBeginAtZero : true,--}}
+            {{--scaleShowGridLines : true,--}}
+            {{--scaleGridLineColor : "rgba(0,0,0,.05)",--}}
+            {{--scaleGridLineWidth : 1,--}}
+            {{--scaleShowHorizontalLines: true,--}}
+            {{--scaleShowVerticalLines: true,--}}
+            {{--barShowStroke : true,--}}
+            {{--barStrokeWidth : 2,--}}
+            {{--barValueSpacing : 30,--}}
+            {{--barDatasetSpacing : 1--}}
+        {{--};--}}
 
-        var myBarChart = new Chart(ctx).Line(data);
-
+        {{--var myBarChart = new Chart(ctx).Line(data);--}}
 
     </script>
-
-
-
-
-
-
 
 @endsection
 
@@ -105,10 +98,6 @@
                                 <td>{{$total}}</td>
                             </tr>
                             @endforeach
-                            <tr>
-                                <td>Day 2</td>
-                                <td>33</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -133,7 +122,15 @@
                     </div>
                     <div style="display: block;" class="box-body">
                         <div class="chart">
-                            <canvas height="227" width="510" id="barChartDailySales" style="height: 227px; width: 510px;"></canvas>
+                            <!--canvas height="227" width="510" id="barChartDailySales" style="height: 227px; width: 510px;"></canvas-->
+                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
+                                    :values="[0, 100, 0, 100, 0]" ></graph>
+
+                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
+                                    :values="[0, 55,44, 100, 0]" ></graph>
+
+                            <graph  :labels="['day 1', 'day 2', 'day 3', 'day 4', 'day 5']"
+                                    :values="[33, 100, 0, 33, 0]" ></graph>
                         </div>
                     </div>
                     <!-- /.box-body -->
