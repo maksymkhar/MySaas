@@ -54,6 +54,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('reports/daily_sales', 'ReportsController@dailySales');
 
+
+    Route::get('download_invoice', 'PDFController@downloadInvoice');
+
+
     Route::get('test', function(){
 
         $subscriptions = Subscription::all();
