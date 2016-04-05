@@ -15,6 +15,41 @@ class PDFController extends Controller
 {
     public function invoiceHtml()
     {
+        return $this->getInvoiceView();
+    }
+
+    public function downloadInvoice()
+    {
+        if (! defined('DOMPDF_ENABLE_AUTOLOAD')) {
+            define('DOMPDF_ENABLE_AUTOLOAD', false);
+        }
+
+        if(file_exists($configPath = base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php')) {
+            require_once $configPath;
+        }
+
+        $dompdf = new Dompdf();
+        $dompdf->load_html($this->getInvoiceView()->render());
+        $dompdf->render();
+        return $this->download($dompdf->output());
+    }
+
+    public function download($pdf)
+    {
+        //$filename = 'test' . '_'.$this->date()->month . '_' . $this->date()->year . '.pdf';
+
+        $filename = "test.pdf";
+
+        return new Response($pdf, 200, [
+            'Content-Description' => 'File Transfer',
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+            'Content-Transfer-Encoding' => 'binary',
+            'Content-Type' => 'application/pdf',
+        ]);
+    }
+
+    public function getInvoiceView()
+    {
         $invoice = new Invoice();
 
         $invoice->date = '12/5/2015';
@@ -35,36 +70,6 @@ class PDFController extends Controller
         );
 
         return view('invoice', $data);
-    }
-
-    public function downloadInvoice()
-    {
-        if (! defined('DOMPDF_ENABLE_AUTOLOAD')) {
-            define('DOMPDF_ENABLE_AUTOLOAD', false);
-        }
-
-        if(file_exists($configPath = base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php')) {
-            require_once $configPath;
-        }
-
-        $dompdf = new Dompdf();
-        $dompdf->load_html(view('invoice')->render());
-        $dompdf->render();
-        return $this->download($dompdf->output());
-    }
-
-    public function download($pdf)
-    {
-        //$filename = 'test' . '_'.$this->date()->month . '_' . $this->date()->year . '.pdf';
-
-        $filename = "test.pdf";
-
-        return new Response($pdf, 200, [
-            'Content-Description' => 'File Transfer',
-            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-Type' => 'application/pdf',
-        ]);
     }
 
 }
