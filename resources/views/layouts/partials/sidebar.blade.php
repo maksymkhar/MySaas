@@ -47,7 +47,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('invoice') }}">Show invoice</a></li>
                     <li><a href="{{ url('download_invoice') }}">Download invoice</a></li>
-                    <li><a href="{{ url('pdf_generator') }}">Generate invoice</a></li>
+                    <li><a href="{{ url('invoice_generator') }}">Generate invoice</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

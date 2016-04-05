@@ -72,9 +72,9 @@ class PDFController extends Controller
         return view('invoices.invoice', $data);
     }
 
-    public function pdfGenerator()
+    public function invoiceGenerator()
     {
-        return view('invoices.pdf_generator');
+        return view('invoices.invoice_generator');
     }
 
 }
