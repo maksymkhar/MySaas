@@ -69,7 +69,12 @@ class PDFController extends Controller
             'product' => 'Milk'
         );
 
-        return view('invoice', $data);
+        return view('invoices.invoice', $data);
+    }
+
+    public function pdfGenerator()
+    {
+        return view('invoices.pdf_generator');
     }
 
 }

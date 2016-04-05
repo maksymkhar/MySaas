@@ -42,6 +42,14 @@
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Invoices</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('invoice') }}">Show invoice</a></li>
+                    <li><a href="{{ url('download_invoice') }}">Download invoice</a></li>
+                    <li><a href="{{ url('pdf_generator') }}">Generate invoice</a></li>
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

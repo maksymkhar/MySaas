@@ -59,6 +59,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('invoice', 'PDFController@invoiceHtml');
 
 
+    Route::get('pdf_generator', 'PDFController@pdfGenerator');
+
+
     Route::get('test', function(){
 
         $subscriptions = Subscription::all();
