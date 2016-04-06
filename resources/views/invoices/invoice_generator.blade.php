@@ -43,11 +43,36 @@
         {
             pdf = new jsPDF('p', 'mm', 'a4');
 
+            pdf.setFontSize(30);
+            pdf.setFontType("bold");
             pdf.text($('#title').val(), 20, 20);
-            pdf.text($('#description').val(), 20, 40);
+
+            pdf.setFontSize(18);
+            pdf.text('Description', 20, 40);
+
+            pdf.setFontSize(14);
+            pdf.setFontType("normal");
+            pdf.text($('#description').val(), 20, 50);
+
+
+            pdf.setFontSize(18);
+            pdf.setFontType("bold");
+            pdf.text('Product', 20, 70);
+
+            pdf.setFontSize(14);
+            pdf.setFontType("normal");
+            pdf.text($('#productName').val(), 20, 80);
+
+            pdf.setFontSize(18);
+            pdf.setFontType("bold");
+            pdf.text('Price', 20, 95);
+
+            pdf.setFontSize(14);
+            pdf.setFontType("normal");
+            pdf.text($('#productPrice').val() + " " + $('#moneyType').val(), 20, 105);
 
             if (img_data.src != null) {
-                pdf.addImage(img_data.src, img_data.type, 180, 10, 20, 20);
+                pdf.addImage(img_data.src, img_data.type, 175, 10, 30, 30);
             }
 
             return pdf;
@@ -106,11 +131,28 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Product name</label>
+                        <input id="productName" class="form-control" placeholder="Name" onblur="updatePdf()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Product price</label>
+                        <input id="productPrice" class="form-control" placeholder="Price" onblur="updatePdf()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Money type</label>
+                        <select required class="form-control" id="moneyType" onchange="updatePdf()">
+                            <option value="&euro;">&euro;</option>
+                            <option value="$">$</option>
+                            <option value="&pound;">&pound;</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <button id="refresh_btn" class="btn btn-large btn-success" onclick="updatePdf()">Refresh</button>
                         <button id="download_btn" class="btn btn-large btn-primary" onclick="downloadPdf()">Download</button>
                     </div>
-
-
 
                 </div>
 
