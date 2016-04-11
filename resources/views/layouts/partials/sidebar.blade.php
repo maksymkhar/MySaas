@@ -36,10 +36,18 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
             <li><a href='{{url("csstransitions")}}'><i class='fa fa-link'></i> <span>CSS Transitions</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Reports</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+                    <li><a href="{{ url('reports/daily_sales') }}">Sale reports</a></li>
                     <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Invoices</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('invoice') }}">Show invoice</a></li>
+                    <li><a href="{{ url('download_invoice') }}">Download invoice</a></li>
+                    <li><a href="{{ url('invoice_generator') }}">Generate invoice</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
