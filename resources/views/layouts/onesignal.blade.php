@@ -38,7 +38,7 @@
                                             <span class="direct-chat-timestamp pull-right">@{{ notification.date }}</span>
                                         </div>
                                         <!-- /.direct-chat-info -->
-                                        <img class="direct-chat-img" src="bower_components/AdminLTE/dist/img/user1-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                                        <img class="direct-chat-img" src="img/user2-160x160.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             @{{ notification.message }}
                                             <span class="pull-right">

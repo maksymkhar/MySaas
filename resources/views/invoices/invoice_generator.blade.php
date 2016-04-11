@@ -117,12 +117,12 @@
 
                     <div class="form-group">
                         <label>Title</label>
-                        <input id="title" class="form-control" placeholder="Invoice title" onblur="updatePdf()">
+                        <input id="title" class="form-control" placeholder="Invoice title" onblur="updatePdf()" value="MySaas">
                     </div>
 
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea id="description" class="form-control" placeholder="Invoice description" rows="3" onblur="updatePdf()"></textarea>
+                        <textarea id="description" class="form-control" placeholder="Invoice description" rows="3" onblur="updatePdf()">Some little description.</textarea>
                     </div>
 
                     <div class="form-group">
@@ -132,12 +132,12 @@
 
                     <div class="form-group">
                         <label>Product name</label>
-                        <input id="productName" class="form-control" placeholder="Name" onblur="updatePdf()">
+                        <input id="productName" class="form-control" placeholder="Name" value="Milk" onblur="updatePdf()">
                     </div>
 
                     <div class="form-group">
                         <label>Product price</label>
-                        <input id="productPrice" class="form-control" placeholder="Price" onblur="updatePdf()">
+                        <input id="productPrice" class="form-control" placeholder="Price" value="3.22" onblur="updatePdf()">
                     </div>
 
                     <div class="form-group">
