@@ -11,9 +11,11 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+use Laravel\Cashier\Subscription;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +38,41 @@ Route::group(['middleware' => ['web']], function () {
     });
 });
 
+
 App::bind('Flash',
     App\Http\Flash::class);
 
+// TODO: FER RUTA MENU
+Route::get('users', 'UsersController@index');
+Route::post('users', 'UsersController@store');
+Route::delete('users/{id}', 'UsersController@delete');
+Route::put('users/{id}', 'UsersController@update');
+
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);
 
+
+
+
+    Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);
+    Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
+    Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+    Route::get('plans', 'PlansController@index');
+    Route::get('register_subscription',  function () {
+        return View('auth.register_subscription');
+    });
+    //Route::post('subscription_payment', 'SubscriptionController@subscribe');
+    Route::post('registerAndSubscribeToStripe', 'Auth\AuthController@registerAndSubscribeToStripe');
+    Route::post('sendContactEmail', 'ContactEmailController@send');
+
+
+
+
+
+
+    Event::listen('user.change', function() {
+        Cache::forget('users');
+    });
 
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
@@ -54,10 +84,44 @@ Route::group(['middleware' => 'web'], function () {
         return View('auth.register_subscription');
     });
 
-    //Route::post('subscription_payment', 'SubscriptionController@subscribe');
+    Route::post('subscription_payment', 'SubscriptionController@subscribe');
 
-    Route::post('registerAndSubscribeToStripe', 'Auth\AuthController@registerAndSubscribeToStripe');
+    Route::get('reports/daily_sales', 'ReportsController@dailySales');
 
-    Route::post('sendContactEmail', 'ContactEmailController@send');
+
+    Route::get('download_invoice', 'PDFController@downloadInvoice');
+    Route::get('invoice', 'PDFController@invoiceHtml');
+
+
+    Route::get('invoice_generator', 'PDFController@invoiceGenerator');
+
+
+    Route::get('test', function(){
+
+        $subscriptions = Subscription::all();
+
+        $totals = array();
+
+        foreach ($subscriptions as $subscription) {
+
+            $day = $subscription->created_at->format('Y-m-d');
+            $quantity = $subscription->quantity;
+
+            $daily = array($day => $quantity);
+
+            if(!in_array($daily, $totals, true)){
+                array_push($totals, $daily);
+            }
+        }
+
+        //array_unique($totals);
+
+        dd(json_encode($totals));
+
+        //$result = array_unique($totals);
+
+        //echo $result;
+
+    });
 
 });

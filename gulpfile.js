@@ -28,4 +28,6 @@ elixir(function(mix) {
     mix.styles([
         'sweetalert.css'
     ]);
+
+    mix.browserify('main.js');
 });
