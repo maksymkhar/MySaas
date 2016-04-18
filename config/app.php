@@ -172,6 +172,8 @@ return [
         Laravel\Cashier\CashierServiceProvider::class,
 
         App\Providers\FlashServiceProvider::class,
+
+        App\Providers\ProfileProvider::class,
     ],
 
     /*
