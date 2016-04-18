@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserHasChanged;
+use App\HtmlProfileCreator;
+use App\JsonProfileCreator;
 use App\Listeners\UserCacheForget;
+use App\Profile;
+use Auth;
 use Cache;
 use Event;
 use Illuminate\Foundation\Auth\User;
@@ -69,6 +73,29 @@ class UsersController extends Controller
 
     private function fireUserHasChanged()
     {
-        Event::fire(new UserHasChanged());
+        Event::fire(new UserHasChanged(User::first()));
     }
+
+    public function show(Profile $profile)
+    {
+        $user = Auth::user();
+
+        return $profile->show($user);
+    }
+
+//    public function showHtmlProfile()
+//    {
+//        $user = Auth::user();
+//        $profileCreator = new HtmlProfileCreator();
+//
+//        return $user->profile($profileCreator);
+//    }
+//
+//    public function showJsonProfile()
+//    {
+//        $user = Auth::user();
+//        $profileCreator = new JsonProfileCreator();
+//
+//        return $user->profile($profileCreator);
+//    }
 }

@@ -78,6 +78,8 @@ Route::group(['middleware' => 'web'], function () {
 //        Cache::forget('users');
 //    });
 
+    Route::get('profile', 'UsersController@show');
+
 
 
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
