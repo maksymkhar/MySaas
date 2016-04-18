@@ -74,9 +74,11 @@ Route::group(['middleware' => 'web'], function () {
 
 
 
-    Event::listen('user.change', function() {
-        Cache::forget('users');
-    });
+//    Event::listen('user.change', function() {
+//        Cache::forget('users');
+//    });
+
+
 
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserHasChanged;
+use App\Listeners\UserCacheForget;
 use Cache;
 use Event;
 use Illuminate\Foundation\Auth\User;
@@ -41,7 +43,8 @@ class UsersController extends Controller
 
         //Cache::flush();
         //Cache::forget('users');
-        Event::fire('user.change');
+        //Event::fire('user.change');
+        $this->fireUserHasChanged();
     }
 
     public function update($id)
@@ -52,7 +55,7 @@ class UsersController extends Controller
 
         //Cache::flush();
         //Cache::forget('users');
-        Event::fire('user.change');
+        $this->fireUserHasChanged();
     }
 
     public function delete($id)
@@ -61,6 +64,11 @@ class UsersController extends Controller
 
         //Cache::flush();
         //Cache::forget('users');
-        Event::fire('user.change');
+        $this->fireUserHasChanged();
+    }
+
+    private function fireUserHasChanged()
+    {
+        Event::fire(new UserHasChanged());
     }
 }
