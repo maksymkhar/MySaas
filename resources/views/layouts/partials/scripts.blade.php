@@ -9,6 +9,44 @@
 
 <script src="{{ asset('/js/main.js') }}" type="text/javascript"></script>
 
+<!-- script src="{{ asset('/js/notificateShotOut.js') }}" type="text/javascript"></script-->
+
+<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+
+<script>
+
+    var notifyUser = function (data) {
+
+        if (!('Notification' in window)) {
+            alert('Web Notification is not supported');
+            return;
+        }
+
+        Notification.requestPermission(function(permission){
+
+            var notification = new Notification(data.shoutOut.user.email +' said:', {
+                body: data.shoutOut.content,
+                icon: data.shoutOut.user.avatar
+            });
+        });
+    };
+
+    Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+            window.console.log(message);
+        }
+    };
+
+    var pusher = new Pusher('3b45f2461bd87c9abfff', {
+        encrypted: true
+    });
+
+    var channel = pusher.subscribe('shoutout-added');
+    channel.bind("App\\Events\\ShoutOutAdded", notifyUser);
+
+</script>
+
 @yield('custom_scripts', '')
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

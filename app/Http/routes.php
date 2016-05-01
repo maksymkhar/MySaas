@@ -55,7 +55,8 @@ Route::put('users/{id}', 'UsersController@update');
 Route::group(['middleware' => 'web'], function () {
 
 
-
+    Route::get('shoutout', 'ShoutOutController@index');
+    Route::post('shoutout', 'ShoutOutController@shoutOut');
 
 
     Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);

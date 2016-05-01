@@ -36,6 +36,7 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
             <li><a href='{{url("csstransitions")}}'><i class='fa fa-link'></i> <span>CSS Transitions</span></a></li>
             <li><a href='{{url("onesignal")}}'><i class='fa fa-link'></i> <span>OneSignal</span></a></li>
+            <li><a href='{{url("shoutout")}}'><i class='fa fa-link'></i> <span>Shout Out</span></a></li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Reports</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
