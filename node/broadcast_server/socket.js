@@ -4,12 +4,12 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Redis = require('ioredis');
 
+http.listen(4000, function() {
+    console.log('Server is running!');
+});
+
 //Create new Redis instance
 var redis = new Redis();
-
-//Example howto subscribe to only one Redis channel
-//redis.subscribe('test-channel', function(err, count) {
-//});
 
 //Subscribe to all Redis Channels
 redis.psubscribe('*', function(err, count) {
@@ -19,8 +19,10 @@ redis.psubscribe('*', function(err, count) {
 
 //Broadcast message when recieved from Redis on all channels
 redis.on('pmessage', function(subscribed,channel, message) {
-    console.log('Message Recieved at channel(' + channel + '): ' + message);
-    message = JSON.parse(message);
-    io.emit(channel + ':' + message.event, message.data);
-});
 
+    console.log('Message Recieved at channel(' + channel + '): ' + message);
+
+    message = JSON.parse(message);
+
+    io.emit(channel, message.data);
+});

@@ -13,6 +13,8 @@
 
 <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
 
 <script>
 
@@ -32,18 +34,30 @@
         });
     };
 
-    Pusher.log = function(message) {
-        if (window.console && window.console.log) {
-            window.console.log(message);
-        }
-    };
+//    PUSHER NOTIFICATIONS
 
-    var pusher = new Pusher('3b45f2461bd87c9abfff', {
-        encrypted: true
+//    Pusher.log = function(message) {
+//        if (window.console && window.console.log) {
+//            window.console.log(message);
+//        }
+//    };
+//
+//    var pusher = new Pusher('3b45f2461bd87c9abfff', {
+//        encrypted: true
+//    });
+//
+//    var channel = pusher.subscribe('shoutout-added');
+//    channel.bind("App\\Events\\ShoutOutAdded", notifyUser);
+
+
+    // REDIS NOTIFICATIONS
+
+    var io = io('http://localhost:4000');
+
+    io.on('shoutout-added', function(msg){
+
+        notifyUser(msg);
     });
-
-    var channel = pusher.subscribe('shoutout-added');
-    channel.bind("App\\Events\\ShoutOutAdded", notifyUser);
 
 </script>
 
